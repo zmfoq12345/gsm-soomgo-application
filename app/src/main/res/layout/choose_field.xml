@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/gsm" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:text="당신에게 필요한 분야를 선택해주세요!"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:gravity="top"
+        />
+
+    <ImageView
+        android:id="@+id/chooseAndroid"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="52dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="185dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/chooseandroid" />
+
+    <ImageView
+        android:id="@+id/chooseIos"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="185dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginBottom="198dp"
+        android:background="#00000000"
+        app:srcCompat="@drawable/chooseios" />
+
+    <ImageView
+        android:id="@+id/chooseAppdesign"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_below="@+id/chooseAndroid"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="55dp"
+        app:srcCompat="@drawable/chooseappdesign" />
+
+    <ImageView
+        android:id="@+id/chooseFlutter"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_below="@+id/chooseAppdesign"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginTop="55dp"
+        app:srcCompat="@drawable/chooseflutter" />
+
+    <ImageView
+        android:id="@+id/chooseRxjava"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_below="@+id/chooseAndroid"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="50dp"
+        app:srcCompat="@drawable/chooserxjava" />
+
+    <ImageView
+        android:id="@+id/chooseHilt"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_below="@+id/chooseRxjava"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="52dp"
+        app:srcCompat="@drawable/choosehilt" />
+
+
+
+
+</RelativeLayout>

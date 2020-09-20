@@ -1,13 +1,14 @@
 package com.example.gsmgosu
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 data class InitData(val imageResource : Int, val name: String)
+
 
 class MainActivity : AppCompatActivity() {
     var initDataList = arrayListOf<InitData>(
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         init()
-
     }
 
     private fun init() {
@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
         val gridLayoutManager = GridLayoutManager(this, 4)
 
         main_recyclerView.layoutManager = gridLayoutManager
-        val adapter = RecyclerViewAdapter(initDataList)
+        val adapter = RecyclerViewAdapter(applicationContext, initDataList)
 
         main_recyclerView.adapter = adapter
+
     }
 }
-

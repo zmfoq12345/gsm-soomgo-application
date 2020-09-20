@@ -1,5 +1,6 @@
 package com.example.gsmgosu
 
+import android.graphics.Typeface
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ class FieldViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         // 텍스트뷰 와 실제 텍스트 데이터를 묶는다.
         usernameTextView.text = model.name
+        usernameTextView.typeface =  Typeface.DEFAULT_BOLD
         Glide
             .with(App.instance)
             .load(model.profileImage)

@@ -1,16 +1,22 @@
 package com.example.gsmgosu
 
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.layout_mainicon.view.*
 
-class RecyclerViewAdapter(val dataList:ArrayList<InitData>):RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val context:Context, val dataList:ArrayList<InitData>):RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
+    fun onClick(){
+
+    }
     //아이템의 갯수
     override fun getItemCount(): Int {
         return dataList.size
@@ -35,13 +41,18 @@ class RecyclerViewAdapter(val dataList:ArrayList<InitData>):RecyclerView.Adapter
             itemView.recyclerView_TextView.text = data.name
 
             //각각의 아이템 클릭시
+
             itemView.setOnClickListener {
                 //여기서 토스터를 어떻게?
-                Toast.makeText(itemView.context, "아이템 '${data.name}'를 클릭했습니다.", Toast.LENGTH_LONG).show()
+                //Toast.makeText(itemView.context, "아이템 '${data.name}'를 클릭했습니다.", Toast.LENGTH_LONG).show()
+                val intent = Intent(itemView.context,ChooseField::class.java)
+                intent.putExtra("field", data.name)
+                itemView.context.startActivity(intent)
+
             }
         }
-
     }
+
 
 }
 

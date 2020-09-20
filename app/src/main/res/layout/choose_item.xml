@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="125dp"
-    android:layout_margin="20dp"
+    android:layout_width="130dp"
+    android:layout_height="130dp"
+    android:layout_marginLeft="35dp"
+    android:layout_marginTop="25dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/filed_txt"
         android:layout_width="38dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/profile_img"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="14dp"
         android:gravity="center_horizontal"
-        android:text="IOS"
-        android:textColor="@android:color/background_dark"
+        android:text="Android"
+        android:textColor="#000000"
         android:textSize="16dp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/roboto"
+        android:textStyle="bold"
+        android:layout_alignRight="@+id/profile_img"
+        android:layout_alignParentLeft="true" />
 
     <ImageView
         android:id="@+id/profile_img"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/chooseandroid"
         />

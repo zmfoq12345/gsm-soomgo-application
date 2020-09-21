@@ -5,7 +5,7 @@ public class Message {
     private MemberData memberData;
     private boolean belongsToCurrentUser;
 
-    public Message(String text, com.example.gsmgosu.MemberData data, boolean belongsToCurrentUser) {
+    public Message(String text, MemberData data, boolean belongsToCurrentUser) {
         this.text = text;
         this.memberData = data;
         this.belongsToCurrentUser = belongsToCurrentUser;
@@ -15,7 +15,7 @@ public class Message {
         return text;
     }
 
-    public com.example.gsmgosu.MemberData getMemberData() {
+    public MemberData getMemberData() {
         return memberData;
     }
 

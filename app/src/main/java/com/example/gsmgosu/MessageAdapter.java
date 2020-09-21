@@ -51,12 +51,12 @@ public class MessageAdapter extends BaseAdapter {
         Message message = messages.get(i);
 
         if (message.isBelongsToCurrentUser()) {
-            convertView = messageInflater.inflate(R.layout.chat_mymessage, null);
+            convertView = messageInflater.inflate(R.layout.my_message, null);
             holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
             convertView.setTag(holder);
             holder.messageBody.setText(message.getText());
         } else {
-            convertView = messageInflater.inflate(R.layout.chat_theirmessage, null);
+            convertView = messageInflater.inflate(R.layout.their_message, null);
             holder.avatar = (View) convertView.findViewById(R.id.avatar);
             holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);

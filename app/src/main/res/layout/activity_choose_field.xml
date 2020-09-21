@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/g"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/gsm"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:text="당신에게 필요한 \n분야를 선택해주세요!"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:gravity="top"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dataList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/some_id" />
+
+
+</RelativeLayout>

@@ -2,8 +2,11 @@ package com.example.gsmgosu;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -31,12 +34,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class LoginActivity  extends AppCompatActivity {
     private FirebaseAuth mAuth = null;
+    public static String jsonResult = "";
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
-    private SignInButton signInButton;
     private Button login;
+    private Context ct;
+    public static String UserName, UserEmail, UserPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +56,7 @@ public class LoginActivity  extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         login = findViewById(R.id.login_google);
         mAuth = FirebaseAuth.getInstance();
-
+        ct = this;
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,11 +66,11 @@ public class LoginActivity  extends AppCompatActivity {
         });
 
         mAuth = FirebaseAuth.getInstance();
-        if (mAuth.getCurrentUser() != null) {
-            Intent intent = new Intent(getApplication(),MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        if (mAuth.getCurrentUser() != null) {
+//            Intent intent = new Intent(getApplication(),MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -101,6 +109,18 @@ public class LoginActivity  extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            UserName = acct.getDisplayName();
+                            UserEmail = acct.getEmail();
+                            Uri uri = acct.getPhotoUrl();
+                            UserPhoto = uri.toString();
+
+                            JSONTask jt = new JSONTask();
+                            jt.execute("http://54.210.142.125:7777/user");
+
+                            Handler hd = new Handler();
+                            hd.postDelayed(new LoginActivity.splashhandler(jt), 2000);
+
+                            Log.d("Name", "updateUI: "+UserName);
                             // Sign in success, update UI with the signed-in user's information
                             Snackbar.make(findViewById(R.id.layout_main), "Authentication Successed.", Snackbar.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -112,6 +132,36 @@ public class LoginActivity  extends AppCompatActivity {
                         }
                     }
                 });
+    }
+    public class splashhandler implements Runnable {
+        JSONTask jt;
+        public splashhandler(JSONTask jt) {
+            this.jt = jt;
+        }
+
+        public void run() {
+
+            if (jt.jsonReturn().equals("")){
+                jsonResult = "network_error";
+                return;
+            }
+            try {
+                JSONObject jo = new JSONObject(jt.jsonReturn());
+                if (!jo.getString("access_token").isEmpty()){
+                    SharedPreferences sharedPreferences = getSharedPreferences("access_token",MODE_PRIVATE);
+                    //저장을 하기위해 editor를 이용하여 값을 저장시켜준다.
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("access_token", jo.getString("access_token")); // key, value를 이용하여 저장하는 형태
+                    editor.commit();
+
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.d("login.java", "result: "+jt.jsonReturn());
+            jsonResult = jt.jsonReturn();
+        }
     }
 
     private void updateUI(FirebaseUser user) { //update ui code here

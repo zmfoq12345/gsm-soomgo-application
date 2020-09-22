@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "626854790752",
+    "firebase_url": "https://soomgo-b3443.firebaseio.com",
+    "project_id": "soomgo-b3443",
+    "storage_bucket": "soomgo-b3443.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626854790752:android:a07537b955d89031a3a505",
+        "android_client_info": {
+          "package_name": "com.example.gsmgosu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626854790752-8mi3om8lk8q7177ll6id4vndoaq8gmmk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gsmgosu",
+            "certificate_hash": "f4c6c0b03c5fb2640b56b66aad6714cf44d3af20"
+          }
+        },
+        {
+          "client_id": "626854790752-os660rbo0qcfh8h6c68usl4edffcb1hs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyeTyaetuBvdBWoDqzFfvCppqVzPoYGUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626854790752-os660rbo0qcfh8h6c68usl4edffcb1hs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

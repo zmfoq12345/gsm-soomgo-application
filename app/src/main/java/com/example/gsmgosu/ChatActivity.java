@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.scaledrone.lib.Listener;
 import com.scaledrone.lib.Room;
 import com.scaledrone.lib.RoomListener;
@@ -23,8 +25,14 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
     private String roomName = "observable-room";
     private EditText editText;
     private Scaledrone scaledrone;
-    private MessageAdapter messageAdapter;
+//    private MessageAdapter messageAdapter;
     private ListView messagesView;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference("message");
+//파배 연결용 객체 코드
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +41,9 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
 
         editText = (EditText) findViewById(R.id.editText);
 
-        messageAdapter = new MessageAdapter(this);
+//        messageAdapter = new MessageAdapter(this);
         messagesView = (ListView) findViewById(R.id.messages_view);
-        messagesView.setAdapter(messageAdapter);
+//        messagesView.setAdapter(messageAdapter);
 
         MemberData data = new MemberData(getRandomName(), getRandomColor());
 
@@ -66,8 +74,9 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
 
     public void sendMessage(View view) {
         String message = editText.getText().toString();
-        if (message.length() > 0) {
-            scaledrone.publish(roomName, message);
+        if (message.length() > 0) {// 유저 이름과 메세지로 chatData 만들기
+            databaseReference.child("chat").child("message").push().setValue(message);
+            //scaledrone.publish(roomName, message);
             editText.getText().clear();
         }
     }
@@ -92,8 +101,8 @@ public class ChatActivity extends AppCompatActivity implements RoomListener {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    messageAdapter.add(message);
-                    messagesView.setSelection(messagesView.getCount() - 1);
+//                    messageAdapter.add(message);
+//                    messagesView.setSelection(messagesView.getCount() - 1);
                 }
             });
         } catch (JsonProcessingException e) {

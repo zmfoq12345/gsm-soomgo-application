@@ -2,7 +2,6 @@ package com.example.gsmgosu;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -29,9 +28,10 @@ public class SplashActivity extends Activity {
 //            if (!email.equals("") && !pw.equals("")){
 //                // 로그인 파일 따로 구현 후 여기에서 사용
 //            }else{
-                  // 회원가입으로 이동
+            // 회원가입으로 이동
 //            }
-            startActivity(new Intent(getApplication(), MainActivity.class));
+            startActivity(new Intent(getApplication(), LoginActivity.class));
+//            startActivity(new Intent(getApplication(), MainActivity.class));
             SplashActivity.this.finish();
         }
     }

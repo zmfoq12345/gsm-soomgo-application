@@ -148,13 +148,8 @@ public class LoginActivity  extends AppCompatActivity {
             try {
                 JSONObject jo = new JSONObject(jt.jsonReturn());
                 if (!jo.getString("access_token").isEmpty()){
-                    SharedPreferences sharedPreferences = getSharedPreferences("access_token",MODE_PRIVATE);
-                    //저장을 하기위해 editor를 이용하여 값을 저장시켜준다.
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("access_token", jo.getString("access_token")); // key, value를 이용하여 저장하는 형태
-                    editor.commit();
-
-
+                    SharedPreferenceManager sp = new SharedPreferenceManager(getApplicationContext());
+                    sp.setData("access_token", jo.getString("access_token"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
